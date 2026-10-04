@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E-VIVLIO</title><link rel="stylesheet" href="/ecosystem/shell.css"></head><body><main id="places" aria-label="Your workspace"></main><aside id="call-tools" hidden><button id="expand-call">Open Cove</button></aside><aside id="music" hidden aria-label="Yard player"><button id="open-yard">Yard</button><span id="track"></span><button id="toggle-music">Pause</button></aside><button id="group-toggle" hidden aria-controls="group-panel" aria-expanded="false">Group chat <span id="group-unread"></span></button>
+<button id="group-notice" hidden aria-live="polite"></button>
+<aside id="group-panel" hidden aria-label="Shared group">
+<header><strong id="group-title">Your group</strong><button id="group-close" aria-label="Close group chat">×</button></header>
+<p id="group-status" role="status"></p>
+<section id="group-setup"><p>Share one group code once. Rooms and messages stay together here.</p>
+<form id="group-create"><input name="name" placeholder="Group name" aria-label="Group name" maxlength="50" required><button>Create group</button></form>
+<form id="group-join"><input name="invite" placeholder="Enter group code" aria-label="Group code" required><button>Join group</button></form></section>
+<section id="group-content" hidden><div class="group-actions"><button id="group-copy">Copy group code</button><button id="group-leave">Leave group</button></div>
+<div id="group-events" role="log" aria-label="Group messages and rooms"></div>
+<form id="group-message"><input name="body" placeholder="Message your group…" aria-label="Message" maxlength="1000" required autocomplete="off"><button>Send</button></form></section></aside>
+<script type="module" src="/ecosystem/group.js"></script><script type="module" src="/ecosystem/shell.js"></script><script type="module" src="/ecosystem/navigation.js"></script></body></html>

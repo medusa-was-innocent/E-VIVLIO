@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Spline Sans Mono", "SFMono-Regular", Menlo, monospace;
+
+  --color-ink-950: #071523;
+  --color-ink-900: #0c1f31;
+  --color-ink-800: #123049;
+  --color-ink-700: #1c4465;
+  --color-ink-600: #2c5a80;
+
+  --color-paper: #eef1f5;
+  --color-card: #fcfdfe;
+  --color-line: #d9e0e9;
+
+  --color-body: #3a4e61;
+  --color-faint: #6d8194;
+
+  --color-royal: #1f6fb2;
+  --color-royal-deep: #175a92;
+  --color-royal-soft: #e2edf8;
+
+  --color-acc: #f0a32f;
+  --color-acc-deep: #d98b16;
+  --color-acc-soft: #fdf1dc;
+
+  --color-moss: #2f9e63;
+  --color-moss-soft: #e0f2e8;
+
+  --color-rust: #c05b34;
+  --color-rust-soft: #f8e6dd;
+
+  --animate-fade-up: fade-up 0.4s cubic-bezier(0.2, 0.65, 0.2, 1) both;
+  --animate-pop-in: pop-in 0.2s cubic-bezier(0.2, 0.65, 0.2, 1) both;
+  --animate-toast-in: toast-in 0.2s cubic-bezier(0.2, 0.65, 0.2, 1) both;
+  --animate-marquee: marquee 46s linear infinite;
+  --animate-shimmer: shimmer 1.2s linear infinite;
+  --animate-shake: shake 0.25s ease both;
+  --animate-stamp: stamp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.96) translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-0.5px, 0); }
+  75% { transform: translate(0.5px, 0); }
+}
+@keyframes stamp {
+  0% { opacity: 0; transform: scale(2.5) rotate(-12deg); }
+  60% { opacity: 1; transform: scale(0.9) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-4deg); }
+}
+@keyframes blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-acc);
+  color: var(--color-ink-950);
+}
+
+/* scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9fb2c4 transparent;
+}
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #9fb2c4; border-radius: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* dotted card-catalog texture */
+.halftone {
+  background-image: radial-gradient(#c3cfdb 1px, transparent 1.1px);
+  background-size: 22px 22px;
+}
+
+/* skeleton shimmer */
+.skeleton {
+  background: linear-gradient(100deg, #e2e8ef 40%, #f2f6fa 50%, #e2e8ef 60%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.65, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* marquee strip */
+.marquee-track {
+  animation: var(--animate-marquee);
+  will-change: transform;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* book spine labels */
+.spine-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+}
+
+/* similar books expand */
+.similar-expand {
+  animation: pop-in 0.4s cubic-bezier(0.2, 0.65, 0.2, 1) both;
+}
+
+/* Book card: hover lift on wrapper */
+.book-lift {
+  transition: transform 0.15s ease-out;
+}
+.book-lift:hover,
+.book-lift:focus-within {
+  transform: translateY(-2px);
+}
+
+/* Book cover: shake on hover - simplified */
+.book-shake {
+  transition: transform 0.1s ease;
+}
+.book-lift:hover .book-shake,
+.book-lift:focus-within .book-shake {
+  animation: var(--animate-shake);
+  animation-duration: 0.25s;
+}
+
+/* Button click feedback */
+.btn-click {
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+.btn-click:active {
+  transform: scale(0.96);
+}
+
+/* Stamp animation */
+.stamp-anim {
+  animation: var(--animate-stamp);
+}
+
+/* Terminal caret */
+.caret { animation: blink 1.1s step-end infinite; }
+
+/* Row entrance */
+.row-in { animation: fade-up 0.55s cubic-bezier(0.2, 0.65, 0.2, 1) both; }
+
+/* Card containment for performance */
+.card-contain {
+  contain: layout style paint;
+}
+
+/* Focus visible ring */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-royal);
+  outline-offset: 2px;
+}
+
+/* Wave animation for audio player */
+@keyframes wave {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+.animate-wave {
+  animation: wave 0.8s ease-in-out infinite;
+}
+
+/* Waving sine wave animation - continuous horizontal scroll */
+@keyframes wave-flow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-40px);
+  }
+}
+
+.animate-wave-line {
+  animation: wave-flow 1s linear infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .book-lift:hover,
+  .book-lift:focus-within {
+    transform: none;
+  }
+  .book-lift:hover .book-shake,
+  .book-lift:focus-within .book-shake {
+    animation: none;
+  }
+  .animate-wave {
+    animation: none;
+    height: 8px;
+  }
+}
+
+/* Performance mode: disable extra decorations */
+.perf-mode .halftone,
+.perf-mode .skeleton {
+  animation: none;
+  background-image: none;
+  background: var(--color-line);
+}
+.perf-mode .marquee-track {
+  animation: none;
+}
+.perf-mode .book-lift:hover,
+.perf-mode .book-lift:focus-within {
+  transform: translateY(-2px);
+}
+.perf-mode .book-lift:hover .book-shake,
+.perf-mode .book-lift:focus-within .book-shake {
+  animation: none;
+}

@@ -1,0 +1,15 @@
+node_modules/
+**/node_modules/
+.env
+.env.*
+!.env.example
+.data/
+artifacts/
+**/dist/
+**/.output/
+**/.vercel/
+**/.nitro/
+.DS_Store
+tmp/
+output/
+*.log

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/media/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/media/favicon.svg" />
+    <link rel="shortcut icon" href="/media/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/media/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/media/site.webmanifest" />
+
+    <meta name="language" content="English" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/media/og-image.webp" />
+
+    <meta
+      property="og:description"
+      content="John and Patricia's comfort website for couples therapy and learning about attachment styles!!"
+    />
+
+    <title>E-VIVLIO · Patricia & Patrick’s Cottage</title>
+  </head>
+  <body>
+    <div class="preloader">
+      <div class="preloader__inner">
+        <div class="preloader__progress-wrapper">
+          <div class="preloader__progress-bar"></div>
+        </div>
+        <span class="preloader__percent" role="status">Preparing the cottage…</span>
+        <button id="retry-cottage" hidden>Retry loading</button>
+        <nav class="quick-places" aria-label="Open an app while the cottage loads">
+          <p>You can open a place while the cottage loads.</p>
+          <a href="/folio/">Folio · Read</a><a href="/lib/">Lib · Books</a><a href="/yard/">Yard · Music</a><a href="/cove/">Cove · Calls</a><a href="/login">Sign in</a>
+        </nav>
+
+        <div class="preloader__intro">
+          <p class="preloader__description">
+            Welcome to Patricia & Patrick’s cottage — a little world for reading,
+            finding books, listening together, and catching up. Explore the three
+            character stickers for Folio Room, Lib, and Yard. The house opens Cove.
+          </p>
+          <div class="preloader__buttons">
+            <button
+              id="enter-btn"
+              class="preloader__btn preloader__btn--primary"
+            >
+              Enter
+            </button>
+            <button
+              id="enter-silent-btn"
+              class="preloader__btn preloader__btn--secondary"
+            >
+              Enter without sound
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="experience-wrapper">
+      <canvas id="experience-canvas"></canvas>
+    </div>
+
+    <button id="back-btn" class="back-btn">&#8592; Back</button>
+
+    <div class="top-right-controls">
+      <button id="day-night-toggle" class="day-night-btn" data-mode="day">
+        <span class="day-night-btn__icon">&#9790;</span>
+      </button>
+      <button id="info-btn" class="info-btn">i</button>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

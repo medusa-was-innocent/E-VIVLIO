@@ -1,0 +1,1 @@
+Blender file redacted otherwise it's too big to upload to GitHub, but you can see the setup for sure tho.

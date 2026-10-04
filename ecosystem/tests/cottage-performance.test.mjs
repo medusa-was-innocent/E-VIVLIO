@@ -1,0 +1,21 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {EventEmitter} from 'node:events';
+import {readFile} from 'node:fs/promises';
+test('hidden cottage stops scheduling frames and resumes with a fresh clock',async()=>{
+ const text=await readFile(new URL('../../john-and-patricias-romantic-comfort-website-main/src/Experience/Utils/Time.js',import.meta.url),'utf8');
+ const tasks=new Map(),events={},docEvents={};let id=0,clock=100;
+ const raf=fn=>{tasks.set(++id,fn);return id;};
+ const cancel=n=>tasks.delete(n);
+ const parent={},document={hidden:false,addEventListener:(k,f)=>docEvents[k]=f};
+ const context={EventEmitter,performance:{now:()=>clock},document,parent,location:{origin:'https://example.test'},requestAnimationFrame:raf,cancelAnimationFrame:cancel,window:{requestAnimationFrame:raf,addEventListener:(k,f)=>events[k]=f}};
+ vm.runInNewContext(text.replace(/import .*?;\n/,'').replace('export class Time','class Time')+'\nglobalThis.time = new Time();',context);
+ assert.equal(tasks.size,1);
+ events.message({source:parent,origin:'https://example.test',data:{type:'ecosystem-view',active:false}});
+ assert.equal(tasks.size,0);
+ clock=5000;
+ events.message({source:parent,origin:'https://example.test',data:{type:'ecosystem-view',active:true}});
+ assert.equal(tasks.size,1);assert.equal(context.time.current,5000);
+ document.hidden=true;docEvents.visibilitychange();assert.equal(tasks.size,0);
+});
