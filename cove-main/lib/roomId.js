@@ -4,22 +4,24 @@
 // generator: adjective + noun + a short random tail, so a fresh room reads
 // like "quiet-harbor-4f2" instead of an opaque id.
 const ADJECTIVES = [
-	"quiet",
-	"bright",
-	"still",
-	"open",
-	"warm",
-	"clear",
-	"soft",
-	"wild",
-	"calm",
-	"swift",
-	"pale",
-	"keen",
 	"amber",
-	"silver",
+	"bright",
+	"calm",
+	"clear",
+	"delicious",
 	"dusk",
+	"keen",
+	"loud",
+	"open",
+	"pale",
+	"quiet",
+	"silver",
+	"soft",
+	"still",
+	"swift",
 	"tide",
+	"warm",
+	"wild",
 ];
 
 const NOUNS = [
