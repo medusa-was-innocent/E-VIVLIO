@@ -51,7 +51,7 @@ Unlike the collaborative reading rooms (Folio), Lib operates as a personal disco
 ## 🚀 Getting Started
 
 ### Prerequisites
-* Node.js (v18 or higher recommended)
+* Node.js (v20 or higher recommended)
 * npm or yarn
 
 ### Installation
