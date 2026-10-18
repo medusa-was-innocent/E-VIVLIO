@@ -24,23 +24,26 @@ const ADJECTIVES = [
 	"wild",
 ];
 
-const NOUNS = [
-	"harbor",
-	"meadow",
-	"inlet",
-	"ridge",
-	"grove",
-	"dune",
+cconst NOUNS = [
 	"atoll",
-	"creek",
 	"bluff",
-	"marsh",
 	"copse",
-	"fjord",
 	"cove",
+	"creek",
+	"dune",
+	"fjord",
+	"glade",  
+	"grove",
+	"harbor",
 	"haven",
+	"inlet",
+	"marsh",
+	"meadow",
 	"nook",
+	"oasis", 
 	"reef",
+	"ridge",
+	"valley",
 ];
 
 const ROOM_RE = /^[a-zA-Z0-9_-]{1,64}$/;
